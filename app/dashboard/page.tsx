@@ -3,38 +3,29 @@ import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useFetch } from "../lib/hooks/useFetch";
 const Dashboard = () => {
   const { signOut, googleAccessToken, user } = useAuth();
-  const [createFormResponse, setCreateFormResponse] = useState(null);
-  const [accessToken, setAccessToken] = useState(null);
-  console.log("User", user);
+
+  const { data, error, loading, fetchData } = useFetch();
 
   const form = {
     info: {
-      title: "Test Form",
+      title: "Test Form: Checking documentTitle",
+      documentTitle: "Document Title Form",
     },
   };
 
-  // Create the form
-  const createForm = async () => {
-    try {
-      const response = await fetch("https://forms.googleapis.com/v1/forms", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-      console.log("Form created:", data);
-      setCreateFormResponse(data);
-      // Will give you formId, editUrl, and responseUrl
-    } catch (error) {
-      console.error("Error creating form:", error);
-    }
+  const handleCreateForm = async () => {
+    fetchData("https://forms.googleapis.com/v1/forms", {
+      method: "POST",
+      requireAuth: true,
+      body: JSON.stringify(form),
+    });
   };
+
+  console.log("Data Fetched", data);
+  console.log("Error", error);
 
   return (
     <div>
@@ -45,7 +36,7 @@ const Dashboard = () => {
         Sign Out
       </button>
 
-      <button onClick={createForm} className="bg-gradient-to-tr from-blue-400 to-purple-400 text-white px-5 py-3">
+      <button onClick={handleCreateForm} className="bg-gradient-to-tr from-blue-400 to-purple-400 text-white px-5 py-3">
         Create Google Form
       </button>
     </div>

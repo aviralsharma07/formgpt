@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         provider: "google",
         options: {
           redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
-          scopes: "https://www.googleapis.com/auth/forms.body",
+          scopes: "https://www.googleapis.com/auth/forms.body https://www.googleapis.com/auth/drive.file",
         },
       });
       if (error) {
