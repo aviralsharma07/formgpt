@@ -1,5 +1,7 @@
 // types/form.ts
 
+import { Image, MediaProperties } from "./formItemKinds/common/image";
+import { QuestionGroupItem } from "./formItemKinds/questionGroupItem";
 import { QuestionItem } from "./formItemKinds/questionItem";
 
 // Base form interface
@@ -20,8 +22,11 @@ interface IFormInfo {
   description?: string;
 }
 
+interface QuizSettings {
+  isQuiz: boolean;
+}
 interface IFormSettings {
-  // Placeholder - will be expanded when we see the FormSettings object structure
+  quizSettings?: QuizSettings;
 }
 
 interface IFormItem {
@@ -33,4 +38,18 @@ interface IFormItem {
 }
 
 // Enum for the different types of form items
-export type FormItemKind = { questionItem: QuestionItem } | { questionGroupItem: QuestionGroupItem } | { pageBreakItem: PageBreakItem } | { textItem: TextItem } | { imageItem: ImageItem } | { videoItem: VideoItem };
+export type FormItemKind = { questionItem: QuestionItem } | { questionGroupItem: QuestionGroupItem } | { pageBreakItem: {} } | { textItem: {} } | { imageItem: ImageItem } | { videoItem: VideoItem };
+
+interface ImageItem {
+  image: Image;
+}
+
+export interface Video {
+  youtubeUri: string;
+  properties: MediaProperties;
+}
+
+interface VideoItem {
+  video: Video;
+  caption: string;
+}
