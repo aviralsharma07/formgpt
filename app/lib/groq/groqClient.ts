@@ -1,4 +1,5 @@
 import Groq from "groq-sdk";
+import { prompt } from "./prompt";
 
 const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
 const groq = new Groq({ apiKey, dangerouslyAllowBrowser: true });
@@ -14,7 +15,7 @@ export async function getGroqChatCompletion() {
     messages: [
       {
         role: "user",
-        content: "What is Love?",
+        content: prompt,
       },
     ],
     model: "llama3-8b-8192",
