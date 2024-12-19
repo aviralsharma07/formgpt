@@ -25,7 +25,7 @@ interface FormItem {
   };
 }
 
-interface FormGeneratorResponse {
+export interface FormGeneratorResponse {
   initialForm: {
     info: {
       title: string;

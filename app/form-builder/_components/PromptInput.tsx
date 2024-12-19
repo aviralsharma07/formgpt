@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Wand2 } from "lucide-react";
 
 interface PromptInputProps {
-  onSubmit?: (prompt: string) => void;
+  onSubmit: (prompt: string) => void;
   isLoading?: boolean;
 }
 
@@ -13,7 +13,7 @@ export function PromptInput({ onSubmit, isLoading }: PromptInputProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (prompt.trim() && !isLoading) {
-      //   onSubmit(prompt);
+      onSubmit(prompt);
     }
   };
 

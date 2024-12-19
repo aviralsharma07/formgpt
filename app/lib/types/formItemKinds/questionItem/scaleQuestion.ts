@@ -1,6 +1,6 @@
 export interface ScaleQuestion {
-  low: string;
-  high: string;
+  low: number;
+  high: number;
   lowLabel?: string;
   highLabel?: string;
 }

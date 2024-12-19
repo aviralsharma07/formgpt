@@ -5,7 +5,7 @@ import { QuestionGroupItem } from "./formItemKinds/questionGroupItem";
 import { QuestionItem } from "./formItemKinds/questionItem";
 
 // Base form interface
-interface IForm {
+export interface IForm {
   formId: string;
   info: IFormInfo;
   settings: IFormSettings;

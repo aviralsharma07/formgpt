@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/form-builder`,
           scopes: "https://www.googleapis.com/auth/forms.body https://www.googleapis.com/auth/drive.file",
         },
       });

@@ -1,9 +1,14 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { ChevronRight, Github, Star } from "lucide-react";
+import { ArrowRightIcon, Github, Star } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/app/context/AuthContext";
 
 const Hero = () => {
+  const { signInWithGoogle, loading } = useAuth();
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <section className="h-[calc(100vh-64px)] flex items-center flex-col justify-center gap-12">
       <div className="space-y-4">
@@ -16,9 +21,9 @@ const Hero = () => {
       <div className="flex flex-col sm:flex-row gap-4 min-w-[240px]">
         <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/35">
           Create My Form
-          <ChevronRight className="ml-2 h-4 w-4" />
+          <ArrowRightIcon className="ml-2 h-4 w-4" />
         </Button>
-        <Button size="lg" variant="outline" className="border border-gray-600 text-gray-300 hover:border-gray-500 hover:text-gray-600 transition-colors bg-transparent">
+        <Button size="lg" variant="outline" className="border border-gray-600 text-gray-300 hover:border-gray-500 hover:text-gray-600 transition-colors bg-transparent" onClick={signInWithGoogle}>
           <svg viewBox="0 0 48 48" className="w-5 h-5 mr-2">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
             <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />

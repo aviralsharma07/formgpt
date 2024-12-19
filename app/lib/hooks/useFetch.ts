@@ -12,7 +12,7 @@ interface UseFetchResponse<T> {
   data: T | null;
   error: Error | null;
   loading: boolean;
-  fetchData: (url: string, options?: FetchOptions) => Promise<void>;
+  fetchData: (url: string, options?: FetchOptions) => Promise<T>;
 }
 
 export function useFetch<T>(): UseFetchResponse<T> {
@@ -24,10 +24,11 @@ export function useFetch<T>(): UseFetchResponse<T> {
   const fetchData = useCallback(
     async (url: string, options: FetchOptions = {}) => {
       if (!googleAccessToken && options.requireAuth) {
+        console.log("token wrong hai");
         setError(new Error("Authentication required but no access token provided"));
         return;
       }
-
+      console.log("Fetching the data");
       const abortController = new AbortController();
       const { signal } = options;
 
@@ -55,8 +56,10 @@ export function useFetch<T>(): UseFetchResponse<T> {
 
         const result = await response.json();
         setData(result);
+        return result;
       } catch (err) {
         setError(err instanceof Error ? err : new Error("An error occurred"));
+        throw error;
       } finally {
         setLoading(false);
       }
