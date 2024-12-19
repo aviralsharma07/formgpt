@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="grid-bg min-h-screen bg-gradient-to-b from-gray-900 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
       {/* <button onClick={signInWithGoogle} className="bg-white text-gray-800 px-8 py-3 rounded-2xl">
         LogIn with Google
       </button>

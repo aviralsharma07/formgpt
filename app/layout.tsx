@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body>{children}</body>
+        <body className="grid-bg">{children}</body>
       </AuthProvider>
     </html>
   );
