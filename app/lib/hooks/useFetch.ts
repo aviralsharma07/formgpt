@@ -25,8 +25,7 @@ export function useFetch<T>(): UseFetchResponse<T> {
     async (url: string, options: FetchOptions = {}) => {
       if (!googleAccessToken && options.requireAuth) {
         console.log("token wrong hai");
-        setError(new Error("Authentication required but no access token provided"));
-        return;
+        throw new Error("Authentication required, Please login again");
       }
       console.log("Fetching the data");
       const abortController = new AbortController();

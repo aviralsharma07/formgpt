@@ -205,20 +205,22 @@ export const getPrompt = (userPrompt: string) => {
      - Each question MUST have exactly ONE question type
      - Never mix multiple question types in the same question object
      - Use strict type checking for all enum values
-  
-  4. Option Object Validation:
-     - When option.isOther is true, DO NOT include:
-       - option.value
-       - option.image
-     - Option interface must only include defined fields:
-       {
-         value?: string,
-         image?: Image,
-         isOther: boolean,
-         goToAction?: GoToAction,
-         goToSectionId?: string
-       }
-  5. Cannot set option.value or option.image when option.isOther is true. Stick to the schema strictly.
+     
+     
+  4. When option.isOther is true, ensure the following:
+      - Allowed Question Types: isOther is only supported for "RADIO" and "CHECKBOX" question types. It must not be used with "DROP_DOWN".
+      - Do not include the following fields when isOther is true:
+        - option.value
+        - option.image
+      - The option interface must adhere to the schema below:
+      interface Option {
+        value?: string;
+        image?: Image;
+        isOther: boolean;
+        goToAction?: GoToAction;
+        goToSectionId?: string;
+      }
+
   ### Available Types and Interfaces
   
 interface Question {
@@ -245,7 +247,7 @@ export enum GoToAction {
 export interface Option {
   value: string; // value of the option. Use 
   image?: Image; // Optional image associated with the option
-  isOther: boolean; // Whether this option is an "Other" option (true or false)
+  isOther: boolean; 
   goToAction?: GoToAction; // Action to go to a specific section (optional)
   goToSectionId?: string; // Section ID to go to (optional)
 }
