@@ -2,7 +2,6 @@
 import Sidebar from "@/components/sidebar";
 import React, { useState } from "react";
 import { PromptInput } from "./_components/PromptInput";
-import { Button } from "@/components/ui/button";
 import { useFetch } from "../lib/hooks/useFetch";
 import { createFormUsingGroq } from "../lib/groq/groqClient";
 import { FormGeneratorResponse, validateFormResponse } from "../lib/types/response";

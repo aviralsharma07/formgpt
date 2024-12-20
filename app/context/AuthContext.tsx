@@ -1,5 +1,5 @@
 "use client";
-import { createContext, ReactNode, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
 import { User } from "@supabase/supabase-js";
 import { supabase } from "@/utils/supabase/client";
 

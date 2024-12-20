@@ -1,14 +1,11 @@
 "use client";
-import { createClient } from "@/utils/supabase/client";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useFetch } from "../lib/hooks/useFetch";
 
 const Dashboard = () => {
   const { signOut, googleAccessToken, user } = useAuth();
 
-  const { data, error, loading, fetchData } = useFetch();
+  const { data, fetchData } = useFetch();
   console.log(data);
   console.log("Fetched Form", (data as any)?.info?.title);
 
