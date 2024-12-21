@@ -10,38 +10,85 @@ import { FormPreview } from "./_components/formPreview";
 import Loader from "./_components/Loader";
 import { useAuth } from "@/app/context/AuthContext";
 
+// const suggestions = [
+//   {
+//     id: 1,
+//     title: "Contact Form",
+//     defaultPrompt: "Create a contact form with fields for name, email, message",
+//   },
+//   {
+//     id: 2,
+//     title: "Feedback Form",
+//     defaultPrompt: "Create a feedback form with fields for name, email, message",
+//   },
+//   {
+//     id: 3,
+//     title: "Job Application Form",
+//     defaultPrompt: "Create a job application form with fields for name, email, phone, resume",
+//   },
+//   {
+//     id: 4,
+//     title: "Survey Form",
+
+//   },
+//   {
+//     id: 5,
+//     title: "Order Form",
+//   },
+//   {
+//     id: 6,
+//     title: "Registration Form",
+//   },
+//   {
+//     id: 7,
+//     title: "Lead Generation Form",
+//   },
+//   {
+//     id: 8,
+//     title: "Payment Form",
+//   },
+// ];
+
 const suggestions = [
   {
     id: 1,
     title: "Contact Form",
+    defaultPrompt: "Create a contact form with fields for name, email, phone number, and message. ",
   },
   {
     id: 2,
     title: "Feedback Form",
+    defaultPrompt: "Create a feedback form that collects customer satisfaction ratings and comments about ",
   },
   {
     id: 3,
     title: "Job Application Form",
+    defaultPrompt: "Create a job application form for the position of ",
   },
   {
     id: 4,
     title: "Survey Form",
+    defaultPrompt: "Create a survey form to gather information about ",
   },
   {
     id: 5,
     title: "Order Form",
+    defaultPrompt: "Create an order form for customers to purchase ",
   },
   {
     id: 6,
     title: "Registration Form",
+    defaultPrompt: "Create a registration form for ",
   },
   {
     id: 7,
     title: "Lead Generation Form",
+    defaultPrompt: "Create a lead generation form to collect information from potential customers interested in ",
   },
   {
     id: 8,
     title: "Payment Form",
+    defaultPrompt: "Create a payment form that collects billing information for ",
   },
 ];
 
@@ -49,6 +96,7 @@ const FormBuilder = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [formLinks, setFormLinks] = useState<{ editLink: string; viewLink: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [currentPrompt, setCurrentPrompt] = useState<string>("");
   const { fetchData } = useFetch();
 
   const generateFormFromAI = async (userPrompt: string): Promise<FormGeneratorResponse> => {
@@ -128,6 +176,10 @@ const FormBuilder = () => {
     }
   };
 
+  const handleSuggestionClick = (suggestion: (typeof suggestions)[0]) => {
+    setCurrentPrompt(suggestion.defaultPrompt);
+  };
+
   if (isProcessing) {
     return <Loader />;
   }
@@ -142,144 +194,18 @@ const FormBuilder = () => {
         <div className="flex flex-col justify-center items-center h-full">
           <h1 className="text-[44px] font-bold text-gray-200">What form would you like to create?</h1>
           <p className="text-gray-400 text-lg mb-5">Describe your form in natural language, and we'll create it for you instantly</p>
-          <PromptInput onSubmit={handleFormSubmit} isLoading={isProcessing} error={error} />
+          <PromptInput onSubmit={handleFormSubmit} isLoading={isProcessing} error={error} value={currentPrompt} onChange={setCurrentPrompt} />
           <div className="flex max-w-2xl mt-16 flex-wrap justify-center gap-3 items-center">
             {suggestions.map((suggestion) => (
-              <button key={suggestion.id} className="text-gray-300 text-[10px] border-purple-400 hover:bg-gray-800 hover:scale-110 transition-all rounded-3xl bg-transparent border py-1 px-2">
+              <button key={suggestion.id} className="text-gray-300 text-[10px] border-purple-400 hover:bg-gray-800 hover:scale-110 transition-all rounded-3xl bg-transparent border py-1 px-2" onClick={() => handleSuggestionClick(suggestion)}>
                 {suggestion.title}
               </button>
             ))}
           </div>
         </div>
       )}
-      {/* <div className="flex items-center justify-center p-10">
-        <FormPreview editLink={"https://docs.google.com/forms/d/1OyzwPTVkznWE9H8Ub3EFzYRTAJySYeWeYl-fqai-Xg4/edit"} viewLink="https://docs.google.com/forms/d/e/1FAIpQLSeN0jlFWCljThp1AAgm8AtrOr5Joo9iKLtJCsRvk-PKLY8aUA/viewform" onNewChat={() => setFormLinks(null)} />
-      </div> */}
     </section>
   );
 };
 
 export default FormBuilder;
-
-// {
-//   "form": {
-//     "formId": "1OyzwPTVkznWE9H8Ub3EFzYRTAJySYeWeYl-fqai-Xg4",
-//     "info": {
-//       "title": "User Goals and Dreams",
-//       "documentTitle": "Untitled form"
-//     },
-//     "settings": {},
-//     "revisionId": "00000004",
-//     "responderUri": "https://docs.google.com/forms/d/e/1FAIpQLSepoei9Mt2hIJcu6t-M-6SEl1vYqYTu0ObigxY2rDgs1Iel-g/viewform",
-//     "items": [
-//       {
-//         "itemId": "3de8735c",
-//         "title": "What are your short-term goals?",
-//         "questionItem": {
-//           "question": {
-//             "questionId": "60f3953a",
-//             "required": true,
-//             "textQuestion": {}
-//           }
-//         }
-//       },
-//       {
-//         "itemId": "5693e3d1",
-//         "title": "What motivates you to achieve your goals?",
-//         "questionItem": {
-//           "question": {
-//             "questionId": "0e027454",
-//             "required": true,
-//             "textQuestion": {
-//               "paragraph": true
-//             }
-//           }
-//         }
-//       },
-//       {
-//         "itemId": "157ec9e2",
-//         "title": "What are your greatest strengths?",
-//         "questionItem": {
-//           "question": {
-//             "questionId": "0088a52c",
-//             "required": true,
-//             "textQuestion": {
-//               "paragraph": true
-//             }
-//           }
-//         }
-//       },
-//       {
-//         "itemId": "5ce61712",
-//         "title": "What are your greatest fears?",
-//         "questionItem": {
-//           "question": {
-//             "questionId": "00ca342a",
-//             "required": true,
-//             "textQuestion": {
-//               "paragraph": true
-//             }
-//           }
-//         }
-//       },
-//       {
-//         "itemId": "3d9c0f25",
-//         "title": "What are your long-term goals?",
-//         "questionItem": {
-//           "question": {
-//             "questionId": "275a6f2c",
-//             "required": true,
-//             "textQuestion": {
-//               "paragraph": true
-//             }
-//           }
-//         }
-//       }
-//     ]
-//   },
-//   "replies": [
-//     {
-//       "createItem": {
-//         "itemId": "3de8735c",
-//         "questionId": [
-//           "60f3953a"
-//         ]
-//       }
-//     },
-//     {
-//       "createItem": {
-//         "itemId": "5693e3d1",
-//         "questionId": [
-//           "0e027454"
-//         ]
-//       }
-//     },
-//     {
-//       "createItem": {
-//         "itemId": "157ec9e2",
-//         "questionId": [
-//           "0088a52c"
-//         ]
-//       }
-//     },
-//     {
-//       "createItem": {
-//         "itemId": "5ce61712",
-//         "questionId": [
-//           "00ca342a"
-//         ]
-//       }
-//     },
-//     {
-//       "createItem": {
-//         "itemId": "3d9c0f25",
-//         "questionId": [
-//           "275a6f2c"
-//         ]
-//       }
-//     }
-//   ],
-//   "writeControl": {
-//     "requiredRevisionId": "00000004"
-//   }
-// }
