@@ -1,5 +1,4 @@
 "use client";
-import Sidebar from "@/components/sidebar";
 import React, { useState } from "react";
 import { PromptInput } from "./_components/PromptInput";
 import { useFetch } from "@/app/lib/hooks/useFetch";
@@ -8,46 +7,6 @@ import { validateFormResponse, FormGeneratorResponse } from "@/app/lib/types/res
 import { IForm } from "@/app/lib/types/form";
 import { FormPreview } from "./_components/formPreview";
 import Loader from "./_components/Loader";
-import { useAuth } from "@/app/context/AuthContext";
-
-// const suggestions = [
-//   {
-//     id: 1,
-//     title: "Contact Form",
-//     defaultPrompt: "Create a contact form with fields for name, email, message",
-//   },
-//   {
-//     id: 2,
-//     title: "Feedback Form",
-//     defaultPrompt: "Create a feedback form with fields for name, email, message",
-//   },
-//   {
-//     id: 3,
-//     title: "Job Application Form",
-//     defaultPrompt: "Create a job application form with fields for name, email, phone, resume",
-//   },
-//   {
-//     id: 4,
-//     title: "Survey Form",
-
-//   },
-//   {
-//     id: 5,
-//     title: "Order Form",
-//   },
-//   {
-//     id: 6,
-//     title: "Registration Form",
-//   },
-//   {
-//     id: 7,
-//     title: "Lead Generation Form",
-//   },
-//   {
-//     id: 8,
-//     title: "Payment Form",
-//   },
-// ];
 
 const suggestions = [
   {
