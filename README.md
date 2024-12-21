@@ -18,8 +18,6 @@
 4. **Integrated Metrics Dashboard**  
    Gain insights into your forms' performance with detailed metrics, such as total responses, active forms, and more—all accessible from the dashboard.
 
----
-
 ## Technologies Used
 
 formGPT leverages the following modern tools and frameworks:
@@ -31,13 +29,9 @@ formGPT leverages the following modern tools and frameworks:
 - **ShadCN UI**: Component library for building aesthetically pleasing user interfaces.
 - **Groq AI API**: Enables using the Laama Model for generating Google Forms Structure.
 
----
-
 ## Live Demo
 
 Check out the live application here: [formGPT](https://formgpt-zeta.vercel.app/)
-
----
 
 ## The Basic Idea
 
@@ -46,8 +40,6 @@ Creating forms is often time-consuming and complex. We’re solving this by usin
 ## Google Form Schema
 
 ![Google Form Schema](/public/googleFormSchema.png)
-
----
 
 ## Installation
 
@@ -106,8 +98,6 @@ Follow these steps to set up the project locally:
    yarn dev
    ```
 
----
-
 ## Usage
 
 ### **How to Use**
@@ -129,8 +119,6 @@ Follow these steps to set up the project locally:
 
 - **Form Generation Limitations**: The AI model may not always generate the desired form structure based on the input description.
 - **Input Fields**: Not all Input fields are supported by the AI model, so some fields may not be generated correctly.
-
----
 
 ## Support
 
