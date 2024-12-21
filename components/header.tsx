@@ -3,6 +3,9 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { Button } from "./ui/button";
+import { ArrowRightIcon, LogInIcon } from "lucide-react";
+import { useAuth } from "@/app/context/AuthContext";
 
 const features: { title: string; href: string; description: string }[] = [
   {
@@ -51,11 +54,12 @@ const resources: { title: string; href: string; description: string }[] = [
 ];
 
 export const Header = () => {
+  const { user, signInWithGoogle } = useAuth();
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-500">
-      <nav className="container flex h-16 items-center px-6">
+      <nav className="flex h-16 items-center px-6">
         <Link href="/" className="text-white mr-8 font-bold text-xl flex items-center space-x-2">
-          form<span className="text-blue-400">GPT</span>
+          form<span className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">GPT</span>
         </Link>
         <NavigationMenu>
           <NavigationMenuList>
@@ -85,6 +89,22 @@ export const Header = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+
+        <div className="ml-auto">
+          {user ? (
+            <Link href="/dashboard">
+              <Button className="bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white shadow-lg shadow-green-500/25 hover:shadow-green-500/35">
+                Dashboard
+                <ArrowRightIcon className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          ) : (
+            <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/35" onClick={signInWithGoogle}>
+              Login
+              <LogInIcon className="ml-1 h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </nav>
     </header>
   );
