@@ -2,6 +2,8 @@
 
 **formGPT** is an AI-powered Google Form Builder that simplifies the process of creating and managing Google Forms. With integrated metrics dashboards, users can effortlessly track the performance of their forms while enjoying an intuitive and user-friendly interface.
 
+![Google Form Schema](/public/formgpt.png)
+
 ## Features
 
 ### **Core Functionalities**
