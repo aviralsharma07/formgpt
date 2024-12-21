@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "./ui/button";
-import { ArrowRightIcon, Github, Star } from "lucide-react";
+import { Button } from "../ui/button";
+import { ArrowRightIcon, Github, Star, Wand2 } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -33,7 +33,7 @@ const Hero = () => {
       <div className="flex flex-col sm:flex-row gap-4 min-w-[240px]">
         <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/35" onClick={handleCreateForm}>
           Create My Form
-          <ArrowRightIcon className="ml-2 h-4 w-4" />
+          <Wand2 className="ml-2 h-4 w-4" />
         </Button>
         {!user && (
           <Button size="lg" variant="outline" className="border border-gray-600 text-gray-300 hover:border-gray-500 hover:text-gray-600 transition-colors bg-transparent" onClick={signInWithGoogle}>

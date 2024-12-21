@@ -32,13 +32,6 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // if the user is logged out then redirect him to home page
-  // const url = request.nextUrl.clone();
-  // if (!user && url.pathname !== "/") {
-  //   url.pathname = "/";
-  //   return NextResponse.redirect(url);
-  // }
-
   // Only redirect if:
   // 1. There's no user AND
   // 2. We're not on the home page AND
