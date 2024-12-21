@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function updateSession(request: NextRequest) {
+  const isAuthCallback = request.nextUrl.pathname === "/auth/callback";
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -32,8 +33,18 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // if the user is logged out then redirect him to home page
+  // const url = request.nextUrl.clone();
+  // if (!user && url.pathname !== "/") {
+  //   url.pathname = "/";
+  //   return NextResponse.redirect(url);
+  // }
+
+  // Only redirect if:
+  // 1. There's no user AND
+  // 2. We're not on the home page AND
+  // 3. We're not processing an auth callback
   const url = request.nextUrl.clone();
-  if (!user && url.pathname !== "/") {
+  if (!user && url.pathname !== "/" && !isAuthCallback && !url.searchParams.has("code")) {
     url.pathname = "/";
     return NextResponse.redirect(url);
   }

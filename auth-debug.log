@@ -1,10 +1,20 @@
-2024-12-21T08:47:49.299Z: GET /auth/callback
-2024-12-21T08:49:05.145Z: GET /auth/callback
-2024-12-21T08:49:49.089Z: GET /auth/callback
-2024-12-21T08:51:09.336Z: GET /auth/callback
-2024-12-21T08:51:37.390Z: GET /auth/callback
-2024-12-21T08:54:47.055Z: GET /auth/callback
-2024-12-21T08:58:11.266Z: GET /auth/callback
-2024-12-21T08:58:51.012Z: GET /auth/callback
-2024-12-21T09:02:49.370Z: GET /auth/callback
-2024-12-21T09:03:50.557Z: GET /auth/callback
+2024-12-21T09:19:13.954Z: GET /auth/callback
+2024-12-21T09:19:13.955Z: code: 1fc82034-0150-467a-8bb7-548e667682ba
+2024-12-21T09:19:13.955Z: next: /form-builder
+2024-12-21T09:19:13.955Z: origin: http://localhost:3000
+2024-12-21T09:19:14.116Z: Local Env: Redirecting to http://localhost:3000/form-builder
+2024-12-21T09:31:21.467Z: GET /auth/callback
+2024-12-21T09:31:21.468Z: code: 60617709-feae-4b29-87c6-29694eaca779
+2024-12-21T09:31:21.468Z: next: /form-builder
+2024-12-21T09:31:21.468Z: origin: http://localhost:3000
+2024-12-21T09:31:22.236Z: Local Env: Redirecting to http://localhost:3000/form-builder
+2024-12-21T09:35:12.670Z: GET /auth/callback
+2024-12-21T09:35:12.671Z: code: 973feec9-31da-4dcb-9cb9-9328a0a02ecb
+2024-12-21T09:35:12.671Z: next: /form-builder
+2024-12-21T09:35:12.672Z: origin: http://localhost:3000
+2024-12-21T09:35:12.851Z: Local Env: Redirecting to http://localhost:3000/form-builder
+2024-12-21T09:35:21.389Z: GET /auth/callback
+2024-12-21T09:35:21.390Z: code: 25a15f33-9377-45f3-854a-823358fe2870
+2024-12-21T09:35:21.390Z: next: /form-builder
+2024-12-21T09:35:21.391Z: origin: http://localhost:3000
+2024-12-21T09:35:21.578Z: Local Env: Redirecting to http://localhost:3000/form-builder

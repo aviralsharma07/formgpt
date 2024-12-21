@@ -26,6 +26,9 @@ export async function GET(request: Request) {
   console.log("code...", code);
   console.log("next...", next);
   console.log("origin...", origin);
+  debugLog(`code: ${code}`);
+  debugLog(`next: ${next}`);
+  debugLog(`origin: ${origin}`);
 
   if (code) {
     const supabase = await createClient();
@@ -35,8 +38,10 @@ export async function GET(request: Request) {
       const isLocalEnv = process.env.NODE_ENV === "development";
       if (isLocalEnv) {
         // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
+        debugLog(`Local Env: Redirecting to ${origin}${next}`);
         return NextResponse.redirect(`${origin}${next}`);
       } else if (forwardedHost) {
+        debugLog(`Forwarded Host: Redirecting to https://${forwardedHost}${next}`);
         return NextResponse.redirect(`https://${forwardedHost}${next}`);
       } else {
         return NextResponse.redirect(`${origin}${next}`);
