@@ -2,13 +2,13 @@
 import Sidebar from "@/components/sidebar";
 import React, { useState } from "react";
 import { PromptInput } from "./_components/PromptInput";
-import { useFetch } from "../lib/hooks/useFetch";
-import { createFormUsingGroq } from "../lib/groq/groqClient";
-import { FormGeneratorResponse, validateFormResponse } from "../lib/types/response";
-import { IForm } from "../lib/types/form";
+import { useFetch } from "@/app/lib/hooks/useFetch";
+import { createFormUsingGroq } from "@/app/lib/groq/groqClient";
+import { validateFormResponse, FormGeneratorResponse } from "@/app/lib/types/response";
+import { IForm } from "@/app/lib/types/form";
 import { FormPreview } from "./_components/formPreview";
 import Loader from "./_components/Loader";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/app/context/AuthContext";
 
 const suggestions = [
   {
@@ -133,8 +133,7 @@ const FormBuilder = () => {
   }
 
   return (
-    <section className="w-screen h-screen">
-      <Sidebar />
+    <section className="max-h-screen overflow-y-auto h-full">
       {formLinks ? (
         <div className="flex items-center justify-center p-10">
           <FormPreview editLink={formLinks.editLink} viewLink={formLinks.viewLink} onNewChat={() => setFormLinks(null)} />
@@ -153,6 +152,9 @@ const FormBuilder = () => {
           </div>
         </div>
       )}
+      {/* <div className="flex items-center justify-center p-10">
+        <FormPreview editLink={"https://docs.google.com/forms/d/1OyzwPTVkznWE9H8Ub3EFzYRTAJySYeWeYl-fqai-Xg4/edit"} viewLink="https://docs.google.com/forms/d/e/1FAIpQLSeN0jlFWCljThp1AAgm8AtrOr5Joo9iKLtJCsRvk-PKLY8aUA/viewform" onNewChat={() => setFormLinks(null)} />
+      </div> */}
     </section>
   );
 };

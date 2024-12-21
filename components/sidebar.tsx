@@ -23,12 +23,12 @@ function NavItem({ icon, label, onClick, isActive }: NavItemProps) {
 const Sidebar = () => {
   const { signOut } = useAuth();
   const router = useRouter();
-  // const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname;
   return (
-    <nav className="fixed left-0 top-0 h-screen w-16 border-r bg-opacity-15 bg-white/5 border-gray-500 flex flex-col items-center py-8">
+    <nav className="h-screen w-16 border-r bg-opacity-15 bg-white/5 border-gray-500 flex flex-col items-center py-8">
       <div className="flex flex-col space-y-8">
         <NavItem icon={<Home className="w-6 h-6" />} onClick={() => router.push("/")} label="Home" />
-        <NavItem icon={<LayoutDashboard className="w-6 h-6" />} label="Dashboard" />
+        <NavItem icon={<LayoutDashboard className="w-6 h-6" />} label="Dashboard" onClick={() => router.push("/dashboard")} isActive={currentPath === "/dashboard"} />
       </div>
       <div className="mt-auto mb-8">
         <NavItem icon={<LogOut className="w-6 h-6" />} label="Sign Out" onClick={signOut} />

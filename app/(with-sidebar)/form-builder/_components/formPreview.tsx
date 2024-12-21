@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Copy, MessageSquarePlus } from "lucide-react";
 import { ActionButton } from "./ActionButton";
+import Link from "next/link";
 
 interface FormPreviewProps {
   editLink: string;
@@ -28,10 +29,12 @@ export function FormPreview({ editLink, viewLink, onNewChat }: FormPreviewProps)
               <Copy className="w-5 h-5" />
             </button>
           </div>
-          <a href={editLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 flex items-center gap-2">
-            {editLink}
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          <div>
+            <Link href={editLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 break-words">
+              {editLink}
+              <ExternalLink className="inline-block ml-2 mb-1 h-4 w-4" />
+            </Link>
+          </div>
         </div>
 
         <div className="bg-gray-700 p-4 rounded-lg">
@@ -41,10 +44,10 @@ export function FormPreview({ editLink, viewLink, onNewChat }: FormPreviewProps)
               <Copy className="w-5 h-5" />
             </button>
           </div>
-          <a href={viewLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+          <Link href={viewLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 break-words">
             {viewLink}
-            <ExternalLink className="w-4 h-4" />
-          </a>
+            <ExternalLink className="w-4 h-4 inline-block ml-2 mb-1" />
+          </Link>
         </div>
       </div>
 
