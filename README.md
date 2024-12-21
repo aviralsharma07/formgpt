@@ -43,6 +43,10 @@ Check out the live application here: [formGPT](https://formgpt-zeta.vercel.app/)
 
 Creating forms is often time-consuming and complex. We’re solving this by using AI to generate Google Forms from simple natural language descriptions, eliminating the need for manual creation. Users get an instant preview of their form, saving time and ensuring accuracy. With Google authentication integration, form creation is secure and easy. Since we don’t save user data, the forms are created directly in Google Forms, allowing users to leverage the full Google Workspace suite while keeping their data private. We make form creation fast, simple, and secure.
 
+## Google Form Schema
+
+![Google Form Schema](/public/googleFormSchema.png)
+
 ---
 
 ## Installation
