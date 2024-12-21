@@ -73,6 +73,11 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
 .grid-bg {
   background-image: linear-gradient(rgba(66, 153, 225, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(66, 153, 225, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
