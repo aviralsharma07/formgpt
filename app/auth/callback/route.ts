@@ -1,12 +1,31 @@
 import { NextResponse } from "next/server";
 // The client you created from the Server-Side Auth instructions
 import { createClient } from "@/utils/supabase/server";
+import fs from "fs";
+import path from "path";
+
+// Create a debug log function
+const debugLog = (message: string) => {
+  const timestamp = new Date().toISOString();
+  const logMessage = `${timestamp}: ${message}\n`;
+
+  // Log to console
+  console.log(logMessage);
+
+  // Log to file
+  const logPath = path.join(process.cwd(), "auth-debug.log");
+  fs.appendFileSync(logPath, logMessage);
+};
 
 export async function GET(request: Request) {
+  debugLog("GET /auth/callback");
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   // if "next" is in param, use it as the redirect URL
   const next = searchParams.get("next") ?? "/";
+  console.log("code...", code);
+  console.log("next...", next);
+  console.log("origin...", origin);
 
   if (code) {
     const supabase = await createClient();
@@ -18,8 +37,6 @@ export async function GET(request: Request) {
         // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
         return NextResponse.redirect(`${origin}${next}`);
       } else if (forwardedHost) {
-        console.log("forwardedHost...", forwardedHost);
-        console.log("next...", next);
         return NextResponse.redirect(`https://${forwardedHost}${next}`);
       } else {
         return NextResponse.redirect(`${origin}${next}`);
