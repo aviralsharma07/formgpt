@@ -24,7 +24,7 @@ export const Header = () => {
           <Link className={linkStyle} href="https://www.github.com/aviralsharma07/formgpt">
             Documentation
           </Link>
-          <Link className={linkStyle} href="https://www.github.com/aviralsharma07/formgpt">
+          <Link className={linkStyle} href="https://www.loom.com/share/74366e2e0e744022935b0b5d73f69752?sid=e8fb2a0e-afba-4e2a-b160-31aeb9a16f11">
             Live Demo
           </Link>
         </div>
